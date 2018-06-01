@@ -1,0 +1,30 @@
+<% if !current_user %>
+  <%= form_with url: session_path do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, name: "session[name]" %>
+
+    <%= form.label :password %>
+    <%= form.password_field :password, name: "session[password]" %>
+
+    <%= form.submit "Login" %>
+  <% end %>
+<% else %>
+  <p>Welcome<p>
+  <%= form_with url: point_collection_path do |form| %>
+    
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, name: "customer[phone_number]" %>
+
+    <%= form.submit "Collect" %>
+  <% end %>
+
+  <%= form_with url: promotion_redemption_path do |form| %>
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, name: "customer[phone_number]" %>
+
+    <% current_promotion.each do |promotion| %>
+      <%= form.radio_button(:id, promotion.id, name: "promotion[id]") %><%= promotion.title %>
+    <% end %>
+    <%= form.submit "Redeem" %>
+  <% end %>
+<% end %>

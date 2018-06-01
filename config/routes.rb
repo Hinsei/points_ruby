@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "home#new"
+
+  post "/session", to: "session#create"
+  post "/collect", to: "customer#point_collection", as: :point_collection
+  post "/redeem", to: "customer#promotion_redemption", as: :promotion_redemption
 end
