@@ -1,5 +1,5 @@
 class CustomerController < ApplicationController
-  before_action :find_customer
+  before_action :find_customer, except: [:check]
 
   def point_collection
     if @customer 
@@ -22,6 +22,16 @@ class CustomerController < ApplicationController
     end
   end
 
+  def check
+  end
+
+  def check_points
+    render json: {
+      current: @customer.collected_points,
+      collected: total_points(@customer.collected_points, @customer.redemptions)
+    }
+  end
+
   private
 
   def customer_params
@@ -39,12 +49,26 @@ class CustomerController < ApplicationController
 
   def redeem_item(customer, promotion)
     remaining_points = customer.collected_points - promotion.cost
-    if  remaining_points > 0
+    if  remaining_points >= 0
       customer.update(collected_points: remaining_points) 
+      record_redemption(@customer, promotion)
       "Item Redeemed Succesfully"
     else
       "Sorry not enough points"
     end
+  end
+
+  def record_redemption(customer, promotion)
+    Redemption.create(
+      customer_id: customer.id, 
+      outlet_id: helpers.current_user.id, 
+      promotion_id: promotion.id
+    )
+  end
+
+  def total_points(current_points, redemptions)
+    spent_points = redemptions.map{|redemption| redemption.promotion.cost}.reduce(:+)
+    current_points + spent_points
   end
 
   def find_customer
