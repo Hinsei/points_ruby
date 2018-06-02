@@ -5,7 +5,7 @@ class SessionController < ApplicationController
 
     if outlet && outlet.authenticate(session_params["password"])
       session[:outlet_id] = outlet.id
-      redirect_to root_path
+      redirect_to point_and_redemption_path
     else
       redirect_to root_path
     end

@@ -1,9 +1,28 @@
-<%= form_with url: promotion_redemption_path do |form| %>
-  <%= form.label :phone_number %>
-  <%= form.text_field :phone_number, name: "customer[phone_number]" %>
+<div class="row align-items-center" style="height: 100%;">
+  <div class="col-md-8 offset-md-2">
+    <p id="redemption-container"></p>
+    <%= form_with url: promotion_redemption_path do |form| %>
+      <div class="form-group">
+        <%= form.label :phone_number, class: "text-center", style: "display: block" %>
+        <%= form.text_field :phone_number, name: "customer[phone_number]", class: "form-control" %>
+      </div>
 
-  <% current_promotion.each do |promotion| %>
-    <%= form.radio_button(:id, promotion.id, name: "promotion[id]") %><%= promotion.title %>
-  <% end %>
-  <%= form.submit "Redeem" %>
-<% end %>
+      <div class="form-group">
+        <% current_promotion.each do |promotion| %>
+          <div class="form-check" style="margin-left: 15vw;">
+            <%= 
+              form.radio_button(:id, 
+                                promotion.id,
+                                name: "promotion[id]", 
+                                id: promotion.title,
+                                class: "form-check-input") 
+            %>
+            <%= form.label promotion.title, class: "form-check-label" %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= form.submit "Redeem", class: "btn btn-block" %>
+    <% end %>
+  </div>
+</div>

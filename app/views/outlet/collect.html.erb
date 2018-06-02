@@ -1,7 +1,13 @@
-<%= form_with url: point_collection_path do |form| %>
-  
-  <%= form.label :phone_number %>
-  <%= form.text_field :phone_number, name: "customer[phone_number]" %>
+<div class="row align-items-center" style="height: 100%">
+  <div class="col-md-8 offset-md-2">
+    <p id="collect-container"></p>
+    <%= form_with url: point_collection_path do |form| %>
+      <div class="form-group">
+        <%= form.label :phone_number, class: "text-center", style: "display: block" %>
+        <%= form.text_field :phone_number, name: "customer[phone_number]", class: "form-control" %>
+      </div>
 
-  <%= form.submit "Collect" %>
-<% end %>
+      <%= form.submit "Collect", class: "btn btn-block" %>
+    <% end %>
+  </div>
+</div>

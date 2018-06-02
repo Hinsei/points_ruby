@@ -4,19 +4,23 @@ class CustomerController < ApplicationController
   def point_collection
     if @customer 
       increment_points(@customer)
-      redirect_to root_path
     else
       @customer = Customer.create(customer_params)
       increment_points(@customer)
-      redirect_to root_path
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
   def promotion_redemption
     if @customer
       promotion = Promotion.find(promotion_params["id"])
-      redeem_item(@customer, promotion)
-      redirect_to root_path
+      @response = redeem_item(@customer, promotion).to_json
+      respond_to do |format|
+        format.js
+      end
     else
       redirect_to root_path
     end
@@ -26,10 +30,14 @@ class CustomerController < ApplicationController
   end
 
   def check_points
-    render json: {
+    @points = {
       current: @customer.collected_points,
       collected: total_points(@customer.collected_points, @customer.redemptions)
     }
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
@@ -52,9 +60,9 @@ class CustomerController < ApplicationController
     if  remaining_points >= 0
       customer.update(collected_points: remaining_points) 
       record_redemption(@customer, promotion)
-      "Item Redeemed Succesfully"
+      true
     else
-      "Sorry not enough points"
+      false
     end
   end
 

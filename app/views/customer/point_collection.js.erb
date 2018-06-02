@@ -1,0 +1,6 @@
+function genCollectText(points) {
+  return `Collection successfull you now have ${points} points`
+}
+
+document.getElementById("collect-container").innerHTML = 
+  genCollectText(<%= @customer.collected_points %>)

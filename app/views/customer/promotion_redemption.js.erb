@@ -1,0 +1,5 @@
+function genRedemptionText(respond) {
+  return respond ? "Item successfully retrieved" : "Sorry you don't have enough points"
+}
+
+document.getElementById('redemption-container').innerHTML  = genRedemptionText(<%= @response %>)

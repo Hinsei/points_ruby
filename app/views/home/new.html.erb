@@ -1,9 +1,19 @@
-<div>
-  <h1>Welcome</h1>
-  <h1>Mulah</h1>
-
-  <ul>
-    <li><%= link_to "Check Points", check_points_path %>
-    <li><%= link_to "Collect and Redeem", point_and_redemption_path  %>
-  </ul>
+<div class="row align-items-center" style="height: 50%;">
+  <div class="col-md-4 offset-md-4 text-center">
+    <img class="logo" src="https://static.wixstatic.com/media/2460f4_70d4d3f908f24299a6d43b5e47bf8fa7~mv2_d_4266_4266_s_4_2.png/v1/fill/w_54,h_54,al_c,usm_0.66_1.00_0.01/2460f4_70d4d3f908f24299a6d43b5e47bf8fa7~mv2_d_4266_4266_s_4_2.png" />
+    <img class="logo" src="https://static.wixstatic.com/media/2460f4_0fe0a6ceccfa4b0791c8b0f0dba9add3~mv2.png/v1/fill/w_140,h_21,al_c,usm_0.66_1.00_0.01/2460f4_0fe0a6ceccfa4b0791c8b0f0dba9add3~mv2.png" style="width: 200px;" />
+  </div>
+</div>
+<div class="row align-items-center" style="height: 25%;">
+  <div class="col-md-4 offset-md-4">
+    <h2 class="text-center">Get Rewarded With Points</h1>
+  </div>
+</div>
+<div class="row align-items-center" style="height: 25%;">
+  <div class="col-md-4 offset-md-1 text-center link-container">
+    <%= link_to "Check Points", check_points_path, class: "root-text" %>
+  </div>
+  <div class="col-md-4 offset-md-2 text-center link-container">
+    <%= link_to "Collect and Redeem", point_and_redemption_path, class: "root-text" %>
+  </div>
 </div>

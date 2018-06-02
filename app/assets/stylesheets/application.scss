@@ -1,0 +1,76 @@
+@import "bootstrap";
+html {
+  height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  background: 
+    linear-gradient(
+      rgba(255,153,0,0.45),
+      rgba(255,153,0,0.45)
+    ), 
+    url("https://us.123rf.com/450wm/siraphol/siraphol1505/siraphol150502166/39719044-selectiv-soft-focus-on-wine-glass-on-dining-table-in-restaurant.jpg?ver=6nkk");
+    background-size: cover;
+}
+
+main {
+  top: 20vh;
+  left: 20vw;
+  height: 60vh;
+  width: 60vw;
+  
+  position: absolute;
+  background: white;
+  border: black solid 2px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.container-fluid {
+  height: 100vh;
+}
+
+.link-container {
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+
+.link-container:hover {
+  box-shadow: 2px 2px 2px black;
+  background: orange;
+  cursor: pointer;
+}
+
+.root-text {
+  font-size: 35px;
+  -webkit-text-stroke: 0.5px orange;
+  color: white;
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+#collect {
+  background: black;
+}
+
+#redeem {
+  background: orange;
+}
+
+#collect:hover, #redeem:hover {
+  background: white;
+}
