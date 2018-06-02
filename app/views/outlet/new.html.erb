@@ -1,0 +1,14 @@
+<% if !current_user %>
+  <%= form_with url: session_path do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, name: "session[name]" %>
+
+    <%= form.label :password %>
+    <%= form.password_field :password, name: "session[password]" %>
+
+    <%= form.submit "Login" %>
+  <% end %>
+<% else %>
+  <%= link_to "Collect", collection_path %>
+  <%= link_to "Redeem", redemption_path %>
+<% end %>

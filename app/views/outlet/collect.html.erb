@@ -1,0 +1,7 @@
+<%= form_with url: point_collection_path do |form| %>
+  
+  <%= form.label :phone_number %>
+  <%= form.text_field :phone_number, name: "customer[phone_number]" %>
+
+  <%= form.submit "Collect" %>
+<% end %>

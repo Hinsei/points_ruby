@@ -11,6 +11,10 @@ class SessionController < ApplicationController
     end
   end
 
+  def delete
+    session[:outlet_id] = nil
+    redirect_to point_and_redemption_path
+  end
 
   private
 
