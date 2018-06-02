@@ -1,5 +1,5 @@
 function genCheckText(current) {
-  return `You're current points with us is ${current}'`
+  return `You're current points with us is ${current}`
 }
 document.getElementById('check-container').innerHTML = genCheckText(<%= @points[:current] %>)
 
