@@ -3,6 +3,10 @@
     <p id="check-container"></p>
     <%= form_with url: check_points_path do |form| %>
       <div class="form-group">
+        <%= form.label :brand, class: "text-center", style: "display: block;" %>
+        <%= form.select :brand_id, options_from_collection_for_select(Brand.all, "id", "name"), {include_blank: true}, class: "form-control"%>
+      </div>
+      <div class="form-group">
         <%= form.label :phone_number, class: "text-center", style: "display: block;" %>
         <%= form.text_field :phone_number, name: "customer[phone_number]", class: "form-control" %>
       </div>
