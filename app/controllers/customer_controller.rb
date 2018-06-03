@@ -58,7 +58,6 @@ class CustomerController < ApplicationController
   def increment_points(collection)
     incremented_points = collection.collected_points + 100
     collection.update(collected_points: incremented_points)
-    byebug
   end
 
   def redeem_item(collection, promotion)
